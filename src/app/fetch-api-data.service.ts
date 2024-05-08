@@ -29,14 +29,14 @@ export class FetchApiDataService {
     console.log(userDetails);
     return this.http
       .post(apiUrl + '/users/new', userDetails)
-      .pipe(catchError(this.handleError));
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Making the api call for the user login endpoint
   public userLogin(credentials: any): Observable<any> {
     return this.http
       .post(apiUrl + '/login', credentials)
-      .pipe(catchError(this.handleError));
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Making the api call for the get all movies endpoint
@@ -161,7 +161,7 @@ export class FetchApiDataService {
         { movieId: movieId },
         { headers: headers }
       )
-      .pipe(catchError(this.handleError));
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Making the api call for the remove movie from favorites endpoint
@@ -179,7 +179,7 @@ export class FetchApiDataService {
         { movieId: movieId },
         { headers: headers }
       )
-      .pipe(catchError(this.handleError));
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Making the api call for the update user endpoint
@@ -190,7 +190,7 @@ export class FetchApiDataService {
     });
     return this.http
       .put(apiUrl + '/users/' + userId, updatedInfo, { headers: headers })
-      .pipe(catchError(this.handleError));
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Making the api call for the delete user endpoint
@@ -201,7 +201,7 @@ export class FetchApiDataService {
     });
     return this.http
       .delete(apiUrl + '/users/' + userId + '/delete', { headers: headers })
-      .pipe(catchError(this.handleError));
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Errors will be handled by the handleError method
