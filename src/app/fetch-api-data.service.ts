@@ -18,6 +18,11 @@ export class FetchApiDataService {
   // Inject the HttpClient module to the constructor params
   // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
+  
+  public extractResponseData(res: any): any {
+    const body = res;
+    return body || {};
+  }
 
   // Making the api call for the user registration endpoint
   public userRegistration(userDetails: any): Observable<any> {
@@ -41,9 +46,10 @@ export class FetchApiDataService {
       Authorization: 'Bearer ' + token,
     });
     return this.http
-      .get(apiUrl + '/movies', { headers: headers })
-      .pipe(catchError(this.handleError));
+      .get<any>(apiUrl + '/movies', { headers: headers })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
+
 
   // Making the api call for the get one movie endpoint
   public getMovie(id: string): Observable<any> {
@@ -52,8 +58,8 @@ export class FetchApiDataService {
       Authorization: 'Bearer ' + token,
     });
     return this.http
-      .get(apiUrl + '/movies/' + id, { headers: headers })
-      .pipe(catchError(this.handleError));
+      .get<any>(apiUrl + '/movies/' + id, { headers: headers })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Making the api call for the get directors endpoint
@@ -63,8 +69,8 @@ export class FetchApiDataService {
       Authorization: 'Bearer ' + token,
     });
     return this.http
-      .get(apiUrl + '/directors', { headers: headers })
-      .pipe(catchError(this.handleError));
+      .get<any>(apiUrl + '/directors', { headers: headers })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
   // Making the api call got the get one director endpoint
   public getDirector(id: string): Observable<any> {
@@ -73,8 +79,8 @@ export class FetchApiDataService {
       Authorization: 'Bearer ' + token,
     });
     return this.http
-      .get(apiUrl + '/directors/' + id, { headers: headers })
-      .pipe(catchError(this.handleError));
+      .get<any>(apiUrl + '/directors/' + id, { headers: headers })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Making the api call for the get all actors endpoint
@@ -84,8 +90,8 @@ export class FetchApiDataService {
       Authorization: 'Bearer ' + token,
     });
     return this.http
-      .get(apiUrl + '/actors', { headers: headers })
-      .pipe(catchError(this.handleError));
+      .get<any>(apiUrl + '/actors', { headers: headers })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Making the api call got the get one actor endpoint
@@ -95,8 +101,8 @@ export class FetchApiDataService {
       Authorization: 'Bearer ' + token,
     });
     return this.http
-      .get(apiUrl + '/actors/' + id, { headers: headers })
-      .pipe(catchError(this.handleError));
+      .get<any>(apiUrl + '/actors/' + id, { headers: headers })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Making the api call for the get genres endpoint
@@ -106,8 +112,8 @@ export class FetchApiDataService {
       Authorization: 'Bearer ' + token,
     });
     return this.http
-      .get(apiUrl + '/genres', { headers: headers })
-      .pipe(catchError(this.handleError));
+      .get<any>(apiUrl + '/genres', { headers: headers })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Making the api call got the get one genre endpoint
@@ -117,8 +123,8 @@ export class FetchApiDataService {
       Authorization: 'Bearer ' + token,
     });
     return this.http
-      .get(apiUrl + '/genres/' + id, { headers: headers })
-      .pipe(catchError(this.handleError));
+      .get<any>(apiUrl + '/genres/' + id, { headers: headers })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Making the api call for the get user endpoint
@@ -128,8 +134,8 @@ export class FetchApiDataService {
       Authorization: 'Bearer ' + token,
     });
     return this.http
-      .get(apiUrl + '/users/' + id, { headers: headers })
-      .pipe(catchError(this.handleError));
+      .get<any>(apiUrl + '/users/' + id, { headers: headers })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Making the api call for the get user favorites endpoint
@@ -139,8 +145,8 @@ export class FetchApiDataService {
       Authorization: 'Bearer ' + token,
     });
     return this.http
-      .get(apiUrl + '/users/' + userId + '/favorites', { headers: headers })
-      .pipe(catchError(this.handleError));
+      .get<any>(apiUrl + '/users/' + userId + '/favorites', { headers: headers })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Making the api call for the add movie to favorites endpoint
