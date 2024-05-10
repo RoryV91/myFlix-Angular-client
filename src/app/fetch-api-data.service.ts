@@ -18,7 +18,7 @@ export class FetchApiDataService {
   // Inject the HttpClient module to the constructor params
   // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
-  
+
   public extractResponseData(res: any): any {
     const body = res;
     return body || {};
@@ -49,7 +49,6 @@ export class FetchApiDataService {
       .get<any>(apiUrl + '/movies', { headers: headers })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
-
 
   // Making the api call for the get one movie endpoint
   public getMovie(id: string): Observable<any> {
@@ -145,7 +144,9 @@ export class FetchApiDataService {
       Authorization: 'Bearer ' + token,
     });
     return this.http
-      .get<any>(apiUrl + '/users/' + userId + '/favorites', { headers: headers })
+      .get<any>(apiUrl + '/users/' + userId + '/favorites', {
+        headers: headers,
+      })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
