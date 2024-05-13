@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+    <span class="logo">myFlix <span class="emoji">📼</span></span>
+    <span class="spacer"></span>
+    <button mat-button routerLink="/movies" *ngIf="isLoggedIn()">Movies</button>
+    <button mat-button routerLink="/actors" *ngIf="isLoggedIn()">Actors</button>
+    <button mat-button routerLink="/directors" *ngIf="isLoggedIn()">Directors</button>
+    <button mat-button routerLink="/genres" *ngIf="isLoggedIn()">Genres</button>
+    <button mat-button routerLink="/profile" *ngIf="isLoggedIn()">Profile</button>
+    <button mat-button (click)="logout()" *ngIf="isLoggedIn()">Logout</button>
+</mat-toolbar>

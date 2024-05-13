@@ -15,8 +15,6 @@ const apiUrl = 'https://myflixapi.vanblaricom.dev:9999';
   providedIn: 'root',
 })
 export class FetchApiDataService {
-  // Inject the HttpClient module to the constructor params
-  // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
 
   public extractResponseData(res: any): any {
@@ -26,7 +24,6 @@ export class FetchApiDataService {
 
   // Making the api call for the user registration endpoint
   public userRegistration(userDetails: any): Observable<any> {
-    console.log(userDetails);
     return this.http
       .post(apiUrl + '/users/new', userDetails)
       .pipe(map(this.extractResponseData), catchError(this.handleError));
@@ -202,6 +199,142 @@ export class FetchApiDataService {
     });
     return this.http
       .delete(apiUrl + '/users/' + userId + '/delete', { headers: headers })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+  // Making the api call for the create movie endpoint
+  public createMovie(movieDetails: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+    });
+    return this.http
+      .post(apiUrl + '/movies/new', movieDetails, { headers: headers })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+  // Making the api call for the update movie endpoint
+  public updateMovie(movieId: string, updatedInfo: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+    });
+    return this.http
+      .put(apiUrl + '/movies/' + movieId, updatedInfo, { headers: headers })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+  // Making the api call for the delete movie endpoint
+  public deleteMovie(movieId: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+    });
+    return this.http
+      .delete(apiUrl + '/movies/' + movieId, { headers: headers })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+  // Making the api call for the create genre endpoint
+  public createGenre(genreDetails: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+    });
+    return this.http
+      .post(apiUrl + '/genres/new', genreDetails, { headers: headers })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+  // Making the api call for the update genre endpoint
+  public updateGenre(genreId: string, updatedInfo: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+    });
+    return this.http
+      .put(apiUrl + '/genres/' + genreId, updatedInfo, { headers: headers })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+  // Making the api call for the delete genre endpoint
+  public deleteGenre(genreId: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+    });
+    return this.http
+      .delete(apiUrl + '/genres/' + genreId, { headers: headers })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+  // Making the api call for the create actor endpoint
+  public createActor(actorDetails: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+    });
+    return this.http
+      .post(apiUrl + '/actors/new', actorDetails, { headers: headers })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+  // Making the api call for the update actor endpoint
+  public updateActor(actorId: string, updatedInfo: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+    });
+    return this.http
+      .put(apiUrl + '/actors/' + actorId, updatedInfo, { headers: headers })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+  // Making the api call for the delete actor endpoint
+  public deleteActor(actorId: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+    });
+    return this.http
+      .delete(apiUrl + '/actors/' + actorId, { headers: headers })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+  // Making the api call for the create director endpoint
+  public createDirector(directorDetails: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+    });
+    return this.http
+      .post(apiUrl + '/directors/new', directorDetails, { headers: headers })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+  // Making the api call for the update director endpoint
+  public updateDirector(directorId: string, updatedInfo: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+    });
+    return this.http
+      .put(
+        apiUrl + '/directors/' + directorId,
+        updatedInfo,
+        { headers: headers }
+      )
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+  // Making the api call for the delete director endpoint
+  public deleteDirector(directorId: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+    });
+    return this.http
+      .delete(apiUrl + '/directors/' + directorId, { headers: headers })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 

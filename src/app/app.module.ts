@@ -10,6 +10,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,14 +19,38 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
-import { HomeComponent } from './home/home.component';
+import { MovieCardComponent } from './movie-card/movie-card.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+import { GenreCardComponent } from './genre-card/genre-card.component';
+import { ActorCardComponent } from './actor-card/actor-card.component';
+import { DirectorCardComponent } from './director-card/director-card.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { EditUserProfileFormComponent } from './edit-user-profile-form/edit-user-profile-form.component';
+import { EditMovieFormComponent } from './edit-movie-form/edit-movie-form.component';
+import { EditGenreFormComponent } from './edit-genre-form/edit-genre-form.component';
+import { EditActorFormComponent } from './edit-actor-form/edit-actor-form.component';
+import { EditDirectorFormComponent } from './edit-director-form/edit-director-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserRegistrationFormComponent,
     UserLoginFormComponent,
-    HomeComponent,
+    MovieCardComponent,
+    WelcomePageComponent,
+    NavbarComponent,
+    FooterComponent,
+    GenreCardComponent,
+    ActorCardComponent,
+    DirectorCardComponent,
+    UserProfileComponent,
+    EditUserProfileFormComponent,
+    EditMovieFormComponent,
+    EditGenreFormComponent,
+    EditActorFormComponent,
+    EditDirectorFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +63,8 @@ import { HomeComponent } from './home/home.component';
     MatDialogModule,
     MatSnackBarModule,
     FormsModule,
+    MatIconModule,
+    MatToolbarModule,
   ],
   providers: [provideClientHydration(), provideAnimationsAsync()],
   bootstrap: [AppComponent],

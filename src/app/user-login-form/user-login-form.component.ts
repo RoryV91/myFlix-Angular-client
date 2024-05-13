@@ -29,7 +29,7 @@ export class UserLoginFormComponent implements OnInit {
         });
         localStorage.setItem('user', JSON.stringify(response.user));
         localStorage.setItem('token', response.token);
-        this.router.navigate(['home']);
+        this.router.navigate(['movies']);
         this.dialogRef.close();
       },
       (response) => {
