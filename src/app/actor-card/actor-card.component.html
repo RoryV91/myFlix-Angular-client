@@ -1,1 +1,11 @@
-<p>actor-card works!</p>
+<mat-card class="actor-card" *ngFor="let actor of actors">
+    <img mat-card-image [src]="actor.imageurl" alt="Photo of {{ actor.name }}">
+    <mat-card-header>
+        <mat-card-title>{{ actor.name }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p>Born: {{ actor.birth | date:'longDate' }}</p>
+        <p *ngIf="actor.death">Died: {{ actor.death | date:'longDate' }}</p>
+        <p>{{ actor.bio }}</p>
+    </mat-card-content>
+</mat-card>

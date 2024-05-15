@@ -1,1 +1,8 @@
-<p>genre-card works!</p>
+<mat-card class="genre-card" *ngFor="let genre of genres">
+    <mat-card-header>
+        <mat-card-title>{{ genre.name }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p>{{ genre.description }}</p>
+    </mat-card-content>
+</mat-card>

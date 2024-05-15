@@ -13,6 +13,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FormsModule } from '@angular/forms';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +33,10 @@ import { EditMovieFormComponent } from './edit-movie-form/edit-movie-form.compon
 import { EditGenreFormComponent } from './edit-genre-form/edit-genre-form.component';
 import { EditActorFormComponent } from './edit-actor-form/edit-actor-form.component';
 import { EditDirectorFormComponent } from './edit-director-form/edit-director-form.component';
+import { NewActorFormComponent } from './new-actor-form/new-actor-form.component';
+import { NewDirectorFormComponent } from './new-director-form/new-director-form.component';
+import { NewMovieFormComponent } from './new-movie-form/new-movie-form.component';
+import { NewGenreFormComponent } from './new-genre-form/new-genre-form.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +56,10 @@ import { EditDirectorFormComponent } from './edit-director-form/edit-director-fo
     EditGenreFormComponent,
     EditActorFormComponent,
     EditDirectorFormComponent,
+    NewActorFormComponent,
+    NewDirectorFormComponent,
+    NewMovieFormComponent,
+    NewGenreFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +74,7 @@ import { EditDirectorFormComponent } from './edit-director-form/edit-director-fo
     FormsModule,
     MatIconModule,
     MatToolbarModule,
+    OverlayModule
   ],
   providers: [provideClientHydration(), provideAnimationsAsync()],
   bootstrap: [AppComponent],
